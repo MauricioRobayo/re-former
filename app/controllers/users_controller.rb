@@ -3,8 +3,6 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
-    @user.email = 'patito@patito.com'
-    warn "*************\n#{@user.inspect}\n***************"
   end
 
   def show
@@ -17,21 +15,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    warn "*****>>>>> #{params}"
     @user= User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   def create
-    warn "\n\n>>> Create <<<\n#{params}\n\n"
-    # @user = User.new(username: params[:username], email: params[:email], password: params[:password])
     @user = User.new(user_params)
-    warn "*************\n#{@user.inspect}\n***************"
     if @user.save
       redirect_to new_user_path
     else
-      warn "****** Can't save: #{@user.valid?}\n#{@user.errors.messages}\n\n"
       render :new
     end
   end
