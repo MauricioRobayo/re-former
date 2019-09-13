@@ -1,17 +1,19 @@
-<%= form_tag('/users', method: :post) do %>
+<%#= form_tag('/users', method: :post) do %>
 
-  <%= label_tag 'username', 'User:' %>
-  <%= text_field_tag "username" %>
+<%= form_for @user do |usr| %>
+
+  <%= usr.label :username, 'User:' %>
+  <%= usr.text_field :username %>
   <br>
 
-  <%= label_tag 'email', 'Email:' %>
-  <%= text_field_tag "email" %>
+  <%= usr.label :email, 'Email:' %>
+  <%= usr.text_field :email, placeholder: 'example@example.com' %>
   <br>
 
-  <%= label_tag 'password', 'Password:' %>
-  <%= text_field_tag "password" %>
+  <%= usr.label :password, 'Password:' %>
+  <%= usr.text_field :password %>
 
   <br>
-  <button type="submit">Submit</button>
+  <%= button_tag 'Submit' %>
 
 <% end %>
