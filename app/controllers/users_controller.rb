@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    warn "***************\nOnShow\n**********************"
     @user = User.find(params[:id])
     render :edit
   end

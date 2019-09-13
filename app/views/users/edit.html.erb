@@ -12,7 +12,7 @@
     </ul>
   </div>
 <% end %>
-<%= form_for @user, url: users_path(@user) do |usr| %>
+<%= form_for @user, url: user_path(@user) do |usr| %>
 
   <%= usr.label :username, 'User:' %>
   <%= usr.text_field :username %>
