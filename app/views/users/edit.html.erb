@@ -1,6 +1,6 @@
 <%#= form_tag('/users', method: :post) do %>
 
-<%= form_for @user do |usr| %>
+<%= form_for @user, url: users_path(@user),  :url => { :action => "update" } do |usr| %>
 
   <%= usr.label :username, 'User:' %>
   <%= usr.text_field :username %>

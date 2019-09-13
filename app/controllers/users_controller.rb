@@ -7,6 +7,22 @@ class UsersController < ApplicationController
     warn "*************\n#{@user.inspect}\n***************"
   end
 
+  def show
+    @user = User.find(params[:id])
+    render :edit
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    warn "*****>>>>> #{params}"
+    @user= User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user)
+  end
+
   def create
     warn "\n\n>>> Create <<<\n#{params}\n\n"
     # @user = User.new(username: params[:username], email: params[:email], password: params[:password])
